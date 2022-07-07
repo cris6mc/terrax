@@ -17,6 +17,7 @@ class Body extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: SizeConfig.screenHeight * 0.04),
+                Image.asset('assets/images/agricultura.jpg'),
                 Text(
                   "Test de cultivo",
                   style: TextStyle(

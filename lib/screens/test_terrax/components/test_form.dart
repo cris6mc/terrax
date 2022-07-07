@@ -54,6 +54,9 @@ class _SignFormState extends State<TestForm> {
           FormError(errors),
           SizedBox(height: getProportionateScreenHeight(20)),
           ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: Color.fromARGB(255, 7, 92, 59),
+            ),
             onPressed: () {
               // Validate returns true if the form is valid, or false otherwise.
               if (_formKey.currentState!.validate()) {
@@ -64,7 +67,11 @@ class _SignFormState extends State<TestForm> {
                 );
               }
             },
-            child: const Text('Submit'),
+            child: const Text('Calcular resultados', style: TextStyle(
+              // fontSize: getProportionateScreenWidth(18),
+              fontSize: 15,
+              color: Colors.white,
+            ),),
           ),
           // DefaultButton(
           //   "Continuar",

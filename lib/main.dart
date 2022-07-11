@@ -56,9 +56,10 @@ class FormCard extends StatefulWidget {
 }
 
 class _FormCardState extends State<FormCard>{
-  //var cardMask = new MaskTextInputFormatter(mask: '#### #### #### ####', filter: { "#": RegExp(r'[0-9]') });
-  //var dateMask = new MaskTextInputFormatter(mask: '##/##', filter: { "#": RegExp(r'[0-9]') });
-  //var codeMask = new MaskTextInputFormatter(mask: '###', filter: { "#": RegExp(r'[0-9]') });
+  TextEditingController textLugar = TextEditingController();
+  TextEditingController textTipo = TextEditingController();
+  TextEditingController textpH = TextEditingController();
+  TextEditingController textHumedad = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -87,7 +88,7 @@ class _FormCardState extends State<FormCard>{
             width: MediaQuery.of(context).size.width - 30,
             child: ElevatedButton(
                 onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> PageResult()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> PageResult(lugar: textLugar, tipo: textTipo, pH: textpH, humedad: textHumedad)));
                 },
                 child: const Text('Calcular resultados')),
           ),
@@ -105,10 +106,13 @@ class _FormCardState extends State<FormCard>{
       padding: const EdgeInsets.symmetric(horizontal: 15),
       margin: const EdgeInsets.symmetric(horizontal: 15),
       child: TextFormField(
+        controller: textLugar,
         keyboardType: TextInputType.name,
         style: const TextStyle(fontSize: 20),
         decoration: const InputDecoration(
+          labelText: "Lugar",
           hintText: 'Ingrese el lugar',
+          labelStyle: TextStyle(fontSize: 24, color: Colors.blue),
           border: InputBorder.none,
         ),
       ),
@@ -124,10 +128,13 @@ class _FormCardState extends State<FormCard>{
       padding: const EdgeInsets.symmetric(horizontal: 15),
       margin: const EdgeInsets.symmetric(horizontal: 15),
       child: TextFormField(
+        controller: textTipo,
         //inputFormatters: [cardMask],
         keyboardType: TextInputType.name,
         style: const TextStyle(fontSize: 20),
         decoration: const InputDecoration(
+          labelText: "Tipo de suelo",
+          labelStyle: TextStyle(fontSize: 24, color: Colors.blue),
           hintText: 'Ingrese el tipo del suelo',
           border: InputBorder.none,
         ),
@@ -144,11 +151,14 @@ class _FormCardState extends State<FormCard>{
       padding: const EdgeInsets.symmetric(horizontal: 15),
       margin: const EdgeInsets.symmetric(horizontal: 15),
       child: TextFormField(
+        controller: textpH,
         //inputFormatters: [dateMask],
         keyboardType: TextInputType.number,
         style: const TextStyle(fontSize: 20),
         decoration: const InputDecoration(
+          labelText: "pH",
           hintText: 'pH',
+          labelStyle: TextStyle(fontSize: 24, color: Colors.blue),
           border: InputBorder.none,
         ),
       ),
@@ -164,11 +174,14 @@ class _FormCardState extends State<FormCard>{
       padding: const EdgeInsets.symmetric(horizontal: 15),
       margin: const EdgeInsets.symmetric(horizontal: 15),
       child: TextFormField(
+        controller: textHumedad,
         //inputFormatters: [codeMask],
         keyboardType: TextInputType.number,
         style: const TextStyle(fontSize: 20),
         decoration: const InputDecoration(
+          labelText: "Humedad",
           hintText: 'Humedad',
+          labelStyle: TextStyle(fontSize: 24, color: Colors.blue),
           border: InputBorder.none,
         ),
       ),
@@ -179,6 +192,13 @@ class _FormCardState extends State<FormCard>{
 
 
 class PageResult extends StatelessWidget{
+  final lugar;
+  final tipo;
+  final pH;
+  final humedad;
+
+  const PageResult({Key? key,required this.lugar,required this.tipo,required this.pH,required this.humedad}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -191,10 +211,10 @@ class PageResult extends StatelessWidget{
             margin: EdgeInsets.all(10),
             child: Column(
               children: [
-                Text("Lugar: Oxapampa"),
-                Text("Tipo de suelo: Arcilloso"),
-                Text("pH: 6.9"),
-                Text("Humedad: 20%"),
+                Text("Lugar:  $lugar"),
+                Text("Tipo de suelo:  $tipo"),
+                Text("pH:  $pH"),
+                Text("Humedad:  $humedad"),
               ],
             ),
           ),

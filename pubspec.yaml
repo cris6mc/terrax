@@ -64,6 +64,11 @@ flutter:
   assets:
     - assets/icons/User.svg
     - assets/images/agricultura.jpg
+    - assets/images/cosecha.jpg
+    - assets/icons/city.svg
+    - assets/icons/humidity.svg
+    - assets/icons/ph.svg
+    - assets/icons/soil.svg
     #  - lib/images/cosecha.jpg
   #   - images/a_dot_ham.jpeg
 

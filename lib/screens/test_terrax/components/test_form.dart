@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:terrax/components/custom_surfix_icon.dart';
 import 'package:terrax/components/form_error.dart';
+import 'package:terrax/routes.dart';
+import 'package:terrax/screens/results/results_screen.dart';
 // import 'package:flutter/services.dart';
 
 import '../../../components/default_button.dart';
@@ -59,13 +61,14 @@ class _SignFormState extends State<TestForm> {
             ),
             onPressed: () {
               // Validate returns true if the form is valid, or false otherwise.
-              if (_formKey.currentState!.validate()) {
-                // If the form is valid, display a snackbar. In the real world,
-                // you'd often call a server or save the information in a database.
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Processing Data')),
-                );
-              }
+              Navigator.pushNamed(context, ResultsScreen.routeName);
+              // if (_formKey.currentState!.validate()) {
+              //   // If the form is valid, display a snackbar. In the real world,
+              //   // you'd often call a server or save the information in a database.
+              //   ScaffoldMessenger.of(context).showSnackBar(
+              //     const SnackBar(content: Text('Processing Data')),
+              //   );
+              // }
             },
             child: const Text('Calcular resultados', style: TextStyle(
               // fontSize: getProportionateScreenWidth(18),
@@ -107,12 +110,13 @@ class _SignFormState extends State<TestForm> {
           removeError(error: kInvalidCitylError);
         }
         city = value;
+        print(city);
       },
       validator: (value) {
         if (value!.isEmpty) {
           addError(error: kCityNullError);
           return "";
-        } else if (value.toLowerCase() == "oxapampa") {
+        } else if (value.toLowerCase() != "oxapampa") {
           addError(error: kInvalidCitylError);
           return "";
         }
@@ -124,7 +128,7 @@ class _SignFormState extends State<TestForm> {
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon("assets/icons/User.svg"),
+        suffixIcon: CustomSurffixIcon("assets/icons/city.svg"),
       ),
     );
   }
@@ -163,7 +167,7 @@ class _SignFormState extends State<TestForm> {
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon("assets/icons/User.svg"),
+        suffixIcon: CustomSurffixIcon("assets/icons/soil.svg"),
       ),
     );
   }
@@ -198,7 +202,7 @@ class _SignFormState extends State<TestForm> {
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon("assets/icons/User.svg"),
+        suffixIcon: CustomSurffixIcon("assets/icons/ph.svg"),
       ),
     );
   }
@@ -233,7 +237,7 @@ class _SignFormState extends State<TestForm> {
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon("assets/icons/User.svg"),
+        suffixIcon: CustomSurffixIcon("assets/icons/humidity.svg"),
       ),
     );
   }

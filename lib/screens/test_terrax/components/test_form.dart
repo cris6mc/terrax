@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:terrax/components/custom_surfix_icon.dart';
 import 'package:terrax/components/form_error.dart';
-import 'package:terrax/routes.dart';
 import 'package:terrax/screens/results/results_screen.dart';
+import 'package:terrax/routes.dart';
 // import 'package:flutter/services.dart';
 
 import '../../../components/default_button.dart';
@@ -10,6 +10,7 @@ import '../../../constants.dart';
 import '../../../size_config.dart';
 
 class TestForm extends StatefulWidget {
+  
   const TestForm({Key? key}) : super(key: key);
   @override
   _SignFormState createState() => _SignFormState();
@@ -60,8 +61,14 @@ class _SignFormState extends State<TestForm> {
               primary: Color.fromARGB(255, 7, 92, 59),
             ),
             onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ResultsScreen(),
+                ),
+              );
               // Validate returns true if the form is valid, or false otherwise.
-              Navigator.pushNamed(context, ResultsScreen.routeName);
+              // Navigator.pushNamed(context, ResultsScreen.routeName);
               // if (_formKey.currentState!.validate()) {
               //   // If the form is valid, display a snackbar. In the real world,
               //   // you'd often call a server or save the information in a database.

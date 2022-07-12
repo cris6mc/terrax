@@ -7,13 +7,8 @@ class TestTerraxScreen extends StatelessWidget {
   static String routeName = "/test";
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Terrax", style: TextStyle(color: Colors.white),),
-        backgroundColor: Color.fromARGB(255, 7, 92, 59),
-        // backgroundColor: Color.fromARGB(255, 2, 4, 37),
-      ),  
-      body: const Body(),
+    return const Scaffold( 
+      body: Body(),
     );
   }
 }

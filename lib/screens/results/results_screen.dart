@@ -4,7 +4,7 @@ import 'components/body.dart';
 
 class ResultsScreen extends StatelessWidget {
   const ResultsScreen({Key? key}) : super(key: key);
-  static String routeName = "/test";
+  static String routeName = "/results_screen";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
